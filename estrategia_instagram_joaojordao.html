@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia Instagram — @joaojordao.ia</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #181818;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #f0ede8;
+    --muted: #888;
+    --muted2: #555;
+    --accent: #ff5c00;
+    --accent2: #ff8c42;
+    --purple: #9b7ff4;
+    --teal: #2dd4a8;
+    --blue: #4da6f5;
+    --amber: #f5a623;
+    --green: #5cc86a;
+    --reels: #9b7ff4;
+    --carrossel: #2dd4a8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border2);
+    padding: 2.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,92,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-tag {
+    display: inline-block;
+    font-family: 'DM Sans', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(255,92,0,0.3);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -.02em;
+    color: var(--text);
+    margin-bottom: .5rem;
+  }
+  .header h1 span { color: var(--accent); }
+  .header-sub {
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 500px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .meta-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ─── LAYOUT ─── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 3rem;
+  }
+
+  .section { margin-bottom: 3rem; }
+
+  .section-label {
+    font-family: 'DM Sans', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    margin-bottom: .75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: -.01em;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color .2s;
+  }
+  .card:hover { border-color: var(--border2); }
+
+  .card-accent {
+    border-left: 3px solid var(--accent);
+  }
+
+  /* ─── METRICS ─── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .metric-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .04em;
+    margin-bottom: 4px;
+  }
+  .metric-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -.02em;
+    line-height: 1;
+  }
+  .metric-sub {
+    font-size: 11px;
+    color: var(--muted2);
+    margin-top: 4px;
+  }
+
+  /* ─── COMPETITORS ─── */
+  .comp-table { width: 100%; border-collapse: collapse; }
+  .comp-table th {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .comp-handle {
+    font-family: 'DM Sans', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .comp-name-text { font-weight: 500; font-size: 14px; color: var(--text); }
+  .comp-seg-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .tag-purple { background: rgba(155,127,244,0.15); color: var(--purple); border: 1px solid rgba(155,127,244,0.2); }
+  .tag-teal   { background: rgba(45,212,168,0.12); color: var(--teal); border: 1px solid rgba(45,212,168,0.2); }
+  .tag-blue   { background: rgba(77,166,245,0.12); color: var(--blue); border: 1px solid rgba(77,166,245,0.2); }
+  .tag-amber  { background: rgba(245,166,35,0.12); color: var(--amber); border: 1px solid rgba(245,166,35,0.2); }
+  .tag-accent { background: rgba(255,92,0,0.12); color: var(--accent2); border: 1px solid rgba(255,92,0,0.2); }
+
+  /* ─── POSICIONAMENTO ─── */
+  .pos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 640px) { .pos-grid { grid-template-columns: 1fr; } }
+  .pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar-item:last-child { border-bottom: none; }
+  .pillar-tag { flex-shrink: 0; }
+  .pillar-desc { font-size: 13px; color: var(--muted); }
+
+  /* ─── CALENDÁRIO ─── */
+  .week-block { margin-bottom: 1.75rem; }
+  .week-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: .75rem;
+  }
+  .week-num {
+    font-family: 'Syne', sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .08em;
+  }
+  .week-theme {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  @media (max-width: 720px) {
+    .days-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .day-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 120px;
+    transition: border-color .2s, transform .15s;
+  }
+  .day-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+  .day-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .day-num-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted2);
+    font-family: 'Syne', sans-serif;
+  }
+  .day-weekday {
+    font-size: 10px;
+    color: var(--muted2);
+  }
+  .format-pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .format-reels   { background: rgba(155,127,244,0.18); color: var(--reels); }
+  .format-carrossel { background: rgba(45,212,168,0.15); color: var(--carrossel); }
+  .day-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+  .day-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ─── ALGORITMO ─── */
+  .algo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+  }
+  .algo-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .algo-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(255,92,0,0.1);
+    border: 1px solid rgba(255,92,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .algo-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .algo-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── HOOKS ─── */
+  .hook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 640px) { .hook-grid { grid-template-columns: 1fr; } }
+  .hook-formula {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .formula-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .formula-time {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ft-0 { background: rgba(155,127,244,0.18); color: var(--purple); }
+  .ft-1 { background: rgba(45,212,168,0.15); color: var(--teal); }
+  .ft-2 { background: rgba(245,166,35,0.12); color: var(--amber); }
+  .formula-text { font-size: 13px; color: var(--muted); }
+
+  .hook-examples { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .hook-example {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 8px 12px;
+    background: var(--bg3);
+    border-radius: 8px;
+    border-left: 2px solid var(--accent);
+    line-height: 1.45;
+  }
+  .hook-example::before { content: '"'; color: var(--accent); font-weight: 700; margin-right: 2px; }
+  .hook-example::after  { content: '"'; color: var(--accent); font-weight: 700; margin-left: 2px; }
+
+  /* ─── DIFERENCIAL ─── */
+  .diff-card {
+    background: linear-gradient(135deg, rgba(255,92,0,0.06) 0%, var(--bg2) 60%);
+    border: 1px solid rgba(255,92,0,0.2);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .diff-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .diff-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .diff-text strong { color: var(--text); font-weight: 500; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 1rem;
+  }
+  .footer-left { font-size: 12px; color: var(--muted2); }
+  .footer-right { font-size: 12px; color: var(--muted2); }
+
+  /* legend */
+  .legend {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-tag">Estratégia de Conteúdo</div>
+  <h1>@joaojordao<span>.ia</span></h1>
+  <p class="header-sub">Análise competitiva + calendário editorial de 30 dias para Instagram — gerado em junho 2026</p>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-dot"></span>8 concorrentes analisados</div>
+    <div class="meta-item"><span class="meta-dot"></span>30 posts planejados</div>
+    <div class="meta-item"><span class="meta-dot"></span>Algoritmo Instagram 2026</div>
+    <div class="meta-item"><span class="meta-dot"></span>Nicho: Automação IA Brasil</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── BENCHMARKING ── -->
+  <div class="section">
+    <div class="section-label">01 — Análise competitiva</div>
+    <div class="section-title">Concorrentes mapeados</div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Maior audiência</div>
+        <div class="metric-value">125K</div>
+        <div class="metric-sub">@thaleslaray</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Mais consistente</div>
+        <div class="metric-value">103K</div>
+        <div class="metric-sub">@nocodestartup_</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Nicho gestão/processos</div>
+        <div class="metric-value">101K</div>
+        <div class="metric-sub">@gestaoai</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Mid-tier referência</div>
+        <div class="metric-value">15K</div>
+        <div class="metric-sub">@larissagomes.ia</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Perfil</th>
+            <th>Seguidores</th>
+            <th>Posicionamento</th>
+            <th>Padrões virais identificados</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="comp-name-text">Thales Laray</div><div class="comp-handle">@thaleslaray</div></td>
+            <td><div class="comp-seg-num">125K</div></td>
+            <td style="font-size:13px;color:var(--muted)">Vibe coding · Claude Code · Times de IA</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-purple">Demo ao vivo em 60s</span>
+                <span class="tag tag-blue">Do zero ao deploy</span>
+                <span class="tag tag-teal">Times de agentes</span>
+                <span class="tag tag-amber">Polêmicas tech</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Nocode Startup</div><div class="comp-handle">@nocodestartup_</div></td>
+            <td><div class="comp-seg-num">103K</div></td>
+            <td style="font-size:13px;color:var(--muted)">Maior ecossistema IA do Brasil</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-accent">Ferramentas desconhecidas</span>
+                <span class="tag tag-teal">Comparativos</span>
+                <span class="tag tag-blue">Carrosséis educativos</span>
+                <span class="tag tag-purple">Notícias em tempo real</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Adriano Couto — GestãoIA</div><div class="comp-handle">@gestaoai</div></td>
+            <td><div class="comp-seg-num">101K</div></td>
+            <td style="font-size:13px;color:var(--muted)">IA para gestão e líderes</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-amber">Cases com ROI e números</span>
+                <span class="tag tag-blue">Antes × depois</span>
+                <span class="tag tag-teal">Autoridade + posicionamento</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Larissa Gomes IA</div><div class="comp-handle">@larissagomes.ia</div></td>
+            <td><div class="comp-seg-num">15K</div></td>
+            <td style="font-size:13px;color:var(--muted)">ChatGPT · Negócio enxuto · IA</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-accent">Prompts prontos (salvar)</span>
+                <span class="tag tag-purple">Resultado em print</span>
+                <span class="tag tag-blue">Tutorial passo a passo</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Gab Miranda</div><div class="comp-handle">@gabmirandamkt</div></td>
+            <td><div class="comp-seg-num">—</div></td>
+            <td style="font-size:13px;color:var(--muted)">Marketing + IA</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-teal">Conteúdo de autoridade</span>
+                <span class="tag tag-amber">Dicas práticas rápidas</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Esposa do Dev</div><div class="comp-handle">@esposadodev</div></td>
+            <td><div class="comp-seg-num">—</div></td>
+            <td style="font-size:13px;color:var(--muted)">Conteúdo tech acessível</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-purple">Humor + educação</span>
+                <span class="tag tag-blue">Tradução de jargão</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Léo Soares IA</div><div class="comp-handle">@leosoares.ia</div></td>
+            <td><div class="comp-seg-num">—</div></td>
+            <td style="font-size:13px;color:var(--muted)">IA para infoprodutos</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-amber">Monetização com IA</span>
+                <span class="tag tag-accent">Produtos digitais</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="comp-name-text">Construindo uma Startup</div><div class="comp-handle">@construindoumastartup</div></td>
+            <td><div class="comp-seg-num">—</div></td>
+            <td style="font-size:13px;color:var(--muted)">Jornada de startup no BR</td>
+            <td>
+              <div class="tags">
+                <span class="tag tag-teal">Bastidores reais</span>
+                <span class="tag tag-purple">Métricas e aprendizados</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── POSICIONAMENTO ── -->
+  <div class="section">
+    <div class="section-label">02 — Posicionamento</div>
+    <div class="section-title">Seu diferencial + pilares de conteúdo</div>
+
+    <div class="pos-grid">
+      <div class="diff-card">
+        <div class="diff-tag">⚡ Diferencial único</div>
+        <p class="diff-text">
+          <strong>Automação real de ponta a ponta.</strong> n8n + Supabase + Evolution API + Lovable + VPS. Nenhum concorrente mostra o stack completo funcionando. Você tem <strong>casos reais com clientes pagantes</strong> (ELEEVA, imobiliárias). Use isso como motor principal — é o que nenhum outro tem.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:500;color:var(--muted);margin-bottom:12px;">4 pilares do seu conteúdo</div>
+        <div class="pillar-item">
+          <span class="tag tag-purple pillar-tag">Automação</span>
+          <div class="pillar-desc">n8n, WhatsApp bots, agentes IA, workflows</div>
+        </div>
+        <div class="pillar-item">
+          <span class="tag tag-blue pillar-tag">Construção</span>
+          <div class="pillar-desc">Lovable, Supabase, SaaS, vibe coding</div>
+        </div>
+        <div class="pillar-item">
+          <span class="tag tag-teal pillar-tag">Cases</span>
+          <div class="pillar-desc">Resultados reais de clientes com dados</div>
+        </div>
+        <div class="pillar-item">
+          <span class="tag tag-amber pillar-tag">Bastidores</span>
+          <div class="pillar-desc">Processo, falhas, aprendizados, pricing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CALENDÁRIO ── -->
+  <div class="section">
+    <div class="section-label">03 — Calendário editorial</div>
+    <div class="section-title">30 dias — Segunda a Sexta</div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--reels);"></div>Reels</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--carrossel);"></div>Carrossel</div>
+      <div style="font-size:12px;color:var(--muted2);margin-left:auto;">1 post/dia · Alternando formatos</div>
+    </div>
+
+    <!-- SEMANA 1 -->
+    <div class="week-block">
+      <div class="week-header">
+        <span class="week-num">SEMANA 1</span>
+        <span class="week-theme">Apresentação + autoridade</span>
+      </div>
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 1</span><span class="day-weekday">Seg</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Quem é você + o que entrega</div>
+          <div class="day-desc">Apresentação pessoal com demo de 30s de uma automação real</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 2</span><span class="day-weekday">Ter</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Stack completo do João Jordão</div>
+          <div class="day-desc">n8n + Evolution + Supabase + Lovable — o que cada ferramenta faz</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 3</span><span class="day-weekday">Qua</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Agente WhatsApp ao vivo</div>
+          <div class="day-desc">"Fiz um agente de recepção em 8h" — mostra o bot respondendo na tela</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 4</span><span class="day-weekday">Qui</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">5 erros de quem começa com n8n</div>
+          <div class="day-desc">Gatilho: "Siga para não errar igual" — alta retenção e salvamento</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 5</span><span class="day-weekday">Sex</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Case ELEEVA — antes × depois</div>
+          <div class="day-desc">Clínica sem bot → com bot Ana. Dados reais se possível</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 2 -->
+    <div class="week-block">
+      <div class="week-header">
+        <span class="week-num">SEMANA 2</span>
+        <span class="week-theme">Educação + ferramentas</span>
+      </div>
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 6</span><span class="day-weekday">Seg</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Como o n8n funciona de verdade</div>
+          <div class="day-desc">Explicação visual dos nodes — conteúdo para salvar e guardar</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 7</span><span class="day-weekday">Ter</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Automação que ninguém está fazendo</div>
+          <div class="day-desc">Integração Supabase + WhatsApp em tempo real, ao vivo</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 8</span><span class="day-weekday">Qua</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Como cobro meus clientes de automação</div>
+          <div class="day-desc">Pricing, proposta, pacotes — gera curiosidade e DMs</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 9</span><span class="day-weekday">Qui</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">"Deploy em 3 minutos" com Lovable</div>
+          <div class="day-desc">Demo rápida do Lovable gerando uma tela funcional do zero</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 10</span><span class="day-weekday">Sex</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Gemini vs GPT em agentes — qual uso e por quê</div>
+          <div class="day-desc">Comparativo honesto com custo real por mil tokens</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 3 -->
+    <div class="week-block">
+      <div class="week-header">
+        <span class="week-num">SEMANA 3</span>
+        <span class="week-theme">Bastidores + polêmica controlada</span>
+      </div>
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 11</span><span class="day-weekday">Seg</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">O erro que quase travou um cliente</div>
+          <div class="day-desc">Storytelling: bug real em produção + como resolvi</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 12</span><span class="day-weekday">Ter</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Quanto ganha um consultor de automação em 2026?</div>
+          <div class="day-desc">Números do mercado + os seus — transparência gera autoridade</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 13</span><span class="day-weekday">Qua</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Fiz um SaaS sozinho em 30 dias</div>
+          <div class="day-desc">Bastidores do CarrosselAI / Plas Academy — jornada real</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 14</span><span class="day-weekday">Qui</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Por que não uso universidade (e não preciso)</div>
+          <div class="day-desc">Reframe bold — acerta no público jovem empreendedor</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 15</span><span class="day-weekday">Sex</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Tutorial: agente de IA no WhatsApp do zero</div>
+          <div class="day-desc">60–90s, mostra a tela, gancho forte nos primeiros 3s</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 4 -->
+    <div class="week-block">
+      <div class="week-header">
+        <span class="week-num">SEMANA 4</span>
+        <span class="week-theme">Prova social + conversão</span>
+      </div>
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 16</span><span class="day-weekday">Seg</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Case imobiliária — automação que gerou agendamentos</div>
+          <div class="day-desc">Dados reais, prints de resultado, antes × depois</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 17</span><span class="day-weekday">Ter</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Meu VPS Hostinger rodando 5 sistemas</div>
+          <div class="day-desc">Mostra o Portainer — impressiona devs e potenciais clientes</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 18</span><span class="day-weekday">Qua</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">3 automações que qualquer empresa deveria ter</div>
+          <div class="day-desc">Gancho comercial — lista de serviços disfarçada de conteúdo</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 19</span><span class="day-weekday">Qui</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">"Quanto custa um agente IA?" — respondo na câmera</div>
+          <div class="day-desc">Transparência gera confiança e abre DMs qualificados</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 20</span><span class="day-weekday">Sex</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Diagnóstico: sua empresa precisa de automação?</div>
+          <div class="day-desc">CTA direto para o diagnóstico pago — fecha o ciclo comercial</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 5 -->
+    <div class="week-block">
+      <div class="week-header">
+        <span class="week-num">SEMANA 5</span>
+        <span class="week-theme">Tendências + educação avançada</span>
+      </div>
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 21</span><span class="day-weekday">Seg</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">O que muda com MCP em 2026</div>
+          <div class="day-desc">Novidade + opinião — viraliza em nichos tech e IA</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 22</span><span class="day-weekday">Ter</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">RAG na prática — o que é e como usei no Supabase</div>
+          <div class="day-desc">Técnico mas acessível — posiciona como referência avançado</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 23</span><span class="day-weekday">Qua</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Meu cliente ligou desesperado — e a IA resolveu</div>
+          <div class="day-desc">Storytelling + prova social emocional — alta retenção</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 24</span><span class="day-weekday">Qui</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Prompt mestre para agente de recepção</div>
+          <div class="day-desc">Conteúdo salvar-e-guardar — muito compartilhado no nicho</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 25</span><span class="day-weekday">Sex</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">LiveKit + WhatsApp — vídeo chamada no bot</div>
+          <div class="day-desc">Demo surpreendente que ninguém no Brasil está mostrando</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEMANA 6 -->
+    <div class="week-block">
+      <div class="week-header">
+        <span class="week-num">SEMANA 6</span>
+        <span class="week-theme">Comunidade + fechamento de ciclo</span>
+      </div>
+      <div class="days-grid">
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 26</span><span class="day-weekday">Seg</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Ferramentas que uso todo dia como solopreneur</div>
+          <div class="day-desc">Carrossel de ferramentas — altíssimo volume de saves</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 27</span><span class="day-weekday">Ter</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">Como saí de 0 a R$X em X meses com IA</div>
+          <div class="day-desc">Jornada pessoal — altíssima identificação com o público</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 28</span><span class="day-weekday">Qua</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">Mapa de automações para clínicas</div>
+          <div class="day-desc">Template replicável — abre mercado de saúde e bem-estar</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 29</span><span class="day-weekday">Qui</span></div>
+          <div class="format-pill format-reels">Reels</div>
+          <div class="day-title">O futuro da automação no Brasil — minha visão</div>
+          <div class="day-desc">Thought leadership — posiciona como referência no nicho</div>
+        </div>
+        <div class="day-card">
+          <div class="day-top"><span class="day-num-badge">DIA 30</span><span class="day-weekday">Sex</span></div>
+          <div class="format-pill format-carrossel">Carrossel</div>
+          <div class="day-title">30 dias de conteúdo — o que aprendi</div>
+          <div class="day-desc">Retrospectiva + CTA claro para novos seguidores e clientes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ALGORITMO ── -->
+  <div class="section">
+    <div class="section-label">04 — Algoritmo Instagram 2026</div>
+    <div class="section-title">Regras de ouro para distribuição orgânica</div>
+
+    <div class="algo-grid">
+      <div class="algo-item">
+        <div class="algo-icon">🎙️</div>
+        <div>
+          <div class="algo-title">Fale a palavra-chave nos Reels</div>
+          <div class="algo-desc">O Instagram indexa o áudio por transcrição automática desde dez/2025. Falar "n8n", "automação WhatsApp" ou "agente IA" nos primeiros 3s ajuda a aparecer no Explorar sem hashtag.</div>
+        </div>
+      </div>
+      <div class="algo-item">
+        <div class="algo-icon">📑</div>
+        <div>
+          <div class="algo-title">Carrossel voltou com força</div>
+          <div class="algo-desc">Em março/2026 o algoritmo revalorizou carrosséis educativos. Eles geram mais saves que Reels. Por isso o calendário alterna os dois formatos.</div>
+        </div>
+      </div>
+      <div class="algo-item">
+        <div class="algo-icon">🕐</div>
+        <div>
+          <div class="algo-title">Melhores horários para BH</div>
+          <div class="algo-desc"><strong style="color:var(--text);font-weight:500">Reels</strong>: 18h30–20h. <strong style="color:var(--text);font-weight:500">Carrossel</strong>: 08h–09h30 ou 12h. Poste direto — não agende para depois.</div>
+        </div>
+      </div>
+      <div class="algo-item">
+        <div class="algo-icon">💬</div>
+        <div>
+          <div class="algo-title">Responda todo comentário nas primeiras 2h</div>
+          <div class="algo-desc">Taxa de resposta do criador é sinal de qualidade. Hierarquia atual: comentários > saves > compartilhamentos > curtidas.</div>
+        </div>
+      </div>
+      <div class="algo-item">
+        <div class="algo-icon">⏱️</div>
+        <div>
+          <div class="algo-title">Reels entre 30–60s têm melhor retenção</div>
+          <div class="algo-desc">Primeiros 3s: gancho visual + frase de impacto. Últimos 5s: CTA direto — "salva esse post" ou "me chama no DM".</div>
+        </div>
+      </div>
+      <div class="algo-item">
+        <div class="algo-icon">👤</div>
+        <div>
+          <div class="algo-title">Mostre seu rosto e sua tela</div>
+          <div class="algo-desc">O algoritmo penaliza conteúdo "cara de IA" e reposts. Conteúdo autoral com rosto recebe bônus de distribuição. Esse é seu maior diferencial sobre concorrentes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOOKS ── -->
+  <div class="section">
+    <div class="section-label">05 — Estrutura de conteúdo</div>
+    <div class="section-title">Fórmula de hook + exemplos testados</div>
+
+    <div class="hook-grid">
+      <div class="card">
+        <div style="font-size:13px;font-weight:500;color:var(--muted);margin-bottom:14px;">Estrutura dos 3 segundos</div>
+        <div class="hook-formula">
+          <div class="formula-step">
+            <span class="formula-time ft-0">0–3s</span>
+            <div class="formula-text">Afirmação surpreendente ou pergunta provocativa que pare o scroll</div>
+          </div>
+          <div class="formula-step">
+            <span class="formula-time ft-1">3–45s</span>
+            <div class="formula-text">Conteúdo + demo visual na tela. Mostre, não só fale</div>
+          </div>
+          <div class="formula-step">
+            <span class="formula-time ft-2">Fim</span>
+            <div class="formula-text">CTA: "salva esse post", "me chama no DM" ou pergunta que gera comentário</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:13px;font-weight:500;color:var(--muted);margin-bottom:14px;">Hooks testados no nicho</div>
+        <ul class="hook-examples">
+          <li class="hook-example">Fiz uma automação que substituiu uma secretária de R$2.500/mês</li>
+          <li class="hook-example">Esse erro no n8n derrubou minha automação em produção</li>
+          <li class="hook-example">Você ainda não usa isso no WhatsApp? Deixa eu te mostrar</li>
+          <li class="hook-example">Montei um SaaS inteiro sem contratar ninguém</li>
+          <li class="hook-example">O cliente chamou às 22h — o bot já tinha resolvido</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  <div class="footer-left">@joaojordao.ia · JordãoIA · Estratégia gerada em junho 2026</div>
+  <div class="footer-right">30 posts · 6 semanas · 1 publicação/dia</div>
+</div>
+
+</body>
+</html>
